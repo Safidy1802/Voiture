@@ -34,6 +34,7 @@ public class UserController {
                 return ResponseEntity.badRequest().body("Cet email est déjà utilisé.");
             }
             System.out.println("ETOOOO");
+            System.out.println("Mandeha");
             String token = utils.generateJwtToken(user);
             String responseJson = "{\"token\":\"" + token + "\", \"id\":\"" + user.getId() + "\"}";
 
