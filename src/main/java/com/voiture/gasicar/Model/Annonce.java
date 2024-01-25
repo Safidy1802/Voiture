@@ -33,7 +33,7 @@ public class Annonce extends DAO{
         Integer i = null;
         boolean nisokatra = false;
         if (co == null) {
-            co = new Connector().postgresql("postgres", "postgres", "gasycar");
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
             nisokatra = true;
         }
         String sql = "Select id as id_voiture from voiture order by id desc limit 1";
@@ -56,7 +56,7 @@ public class Annonce extends DAO{
         Integer i = null;
         boolean nisokatra = false;
         if (co == null) {
-            co = new Connector().postgresql("postgres", "postgres", "gasycar");
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
             nisokatra = true;
         }
         String sql = "Select etat from annonce where id='"+id_annonce+"'";
@@ -78,7 +78,7 @@ public class Annonce extends DAO{
     public void validateAnnonce(Connection co, Integer id_annonce) throws Exception {
         boolean nisokatra = false;
         if (co == null) {
-            co = new Connector().postgresql("postgres", "postgres", "gasycar");
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
             nisokatra = true;
         }
         String sql = "update annonce set etat = 10 where id='"+id_annonce+"'";
@@ -97,7 +97,7 @@ public class Annonce extends DAO{
     public void refuserAnnonce(Connection co, Integer id_annonce) throws Exception{
         boolean nisokatra = false;
         if (co == null) {
-            co = new Connector().postgresql("postgres", "postgres", "gasycar");
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
             nisokatra = true;
         }
         String sql = "update annonce set etat = 5 where id='"+id_annonce+"'";
