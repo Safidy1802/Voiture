@@ -1,7 +1,10 @@
 package com.voiture.gasicar.Controller;
 
+import java.util.Vector;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,6 +100,24 @@ public class AnnonceController {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Une erreur s'est produite");
         }
+    }
+
+    @GetMapping("/annonceValider")
+    @Authority(role = {Role.USER,Role.ADMIN})
+    public Vector<Annonce> getAllValidated() throws Exception{
+        Annonce annonce = new Annonce();
+        annonce.setEtat(10);
+        Vector<Annonce> valide = annonce.select(null);
+        return valide;
+    }
+
+    @GetMapping("/annonceRefuser")
+    @Authority(role = {Role.USER,Role.ADMIN})
+    public Vector<Annonce> getAllRefused() throws Exception{
+        Annonce annonce = new Annonce();
+        annonce.setEtat(5);
+        Vector<Annonce> refus = annonce.select(null);
+        return refus;
     }
 
 
