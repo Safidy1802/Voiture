@@ -25,7 +25,7 @@ public class UserController {
             user.setNom(request.getParameter("nom"));
             user.setPrenom(request.getParameter("prenom"));
             user.setEmail(request.getParameter("email"));
-            user.setRole("ADMIN");
+            user.setRole("USER");
             user.setPassword(request.getParameter("password"));
             Integer i = user.getUserByMail(request.getParameter("email"), request.getParameter("password"));
             if (i == 0) {
@@ -34,9 +34,8 @@ public class UserController {
                 return ResponseEntity.badRequest().body("Cet email est déjà utilisé.");
             }
             System.out.println("ETOOOO");
-            System.out.println("Mandeha");
             String token = utils.generateJwtToken(user);
-            String responseJson = "{\"token\":\"" + token + "\", \"id\":\"" + user.getId() + "\"}";
+            String responseJson = "{\"token\":\"" + token + "\"}";
 
             return ResponseEntity.ok(responseJson);
         } catch (Exception e) {
