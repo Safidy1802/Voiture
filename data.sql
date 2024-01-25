@@ -111,17 +111,17 @@ create table annonce (
     etat integer
 );
 
-create table annonce_valider (
-    id serial primary key,
-    id_annonce integer references annonce(id),
-    date_validation date default current_date()
-);
+-- create table annonce_valider (
+--     id serial primary key,
+--     id_annonce integer references annonce(id),
+--     date_validation date default current_date()
+-- );
 
-create table annonce_refuser (
-    id serial primary key,
-    id_annonce integer references annonce(id),
-    date_refus date default current_date()
-);
+-- create table annonce_refuser (
+--     id serial primary key,
+--     id_annonce integer references annonce(id),
+--     date_refus date default current_date()
+-- );
 
 create table annonce_favoris (
     id serial primary key,

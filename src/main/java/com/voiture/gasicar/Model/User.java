@@ -10,7 +10,7 @@ import com.voiture.gasicar.Dao.Connector;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
 
-@TableInfo(name = "users", user = "postgres", pass = "postgres", database = "gasycar")
+@TableInfo(name = "users", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class User extends DAO {
     @Column(isPrimary = true, name = "id")
     String id;
@@ -30,7 +30,7 @@ public class User extends DAO {
         Connection co = null;
         boolean nisokatra = false;
         if (co == null) {
-            co = new Connector().postgresql("postgres", "postgres", "gasycar");
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
             nisokatra = true;
         }
         String sql = "Select count(*) as isa from users where email = '" + email + "' and password = '" + password
@@ -55,7 +55,7 @@ public class User extends DAO {
         Connection co = null;
         boolean nisokatra = false;
         if (co == null) {
-            co = new Connector().postgresql("postgres", "postgres", "gasycar");
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
             nisokatra = true;
         }
         String sql = "Select * from users where email = '" + email + "' and password = '" + mdp + "'";

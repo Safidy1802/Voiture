@@ -9,7 +9,7 @@ public class Connector {
     
     public Connection postgresql(String user,String password,String database) throws Exception{
         Class.forName("org.postgresql.Driver");
-        Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+database,user,password);
+        Connection con=DriverManager.getConnection("jdbc:postgresql://ep-morning-violet-a5cwhk24.us-east-2.aws.neon.tech:5432/"+database,user,password);
         con.setAutoCommit(false);
         return con;
     }

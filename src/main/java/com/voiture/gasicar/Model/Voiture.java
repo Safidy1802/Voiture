@@ -4,7 +4,7 @@ import com.voiture.gasicar.Dao.Column;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
 
-@TableInfo(name = "voiture", user = "postgres", pass = "postgres", database = "gasycar")
+@TableInfo(name = "voiture", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class Voiture extends DAO{
     @Column(isPrimary = true, name = "id")
     Integer id;

@@ -11,7 +11,7 @@ import com.voiture.gasicar.Dao.Connector;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
 
-@TableInfo(name = "annonce", user = "postgres", pass = "postgres", database = "gasycar")
+@TableInfo(name = "annonce", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class Annonce extends DAO{
     @Column(isPrimary = true, name = "id")
     Integer id;
