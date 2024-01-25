@@ -103,7 +103,7 @@ public class AnnonceController {
     }
 
     @GetMapping("/annonceValider")
-    @Authority(role = {Role.USER,Role.ADMIN})
+    @Authority(role = Role.USER)
     public Vector<Annonce> getAllValidated() throws Exception{
         Annonce annonce = new Annonce();
         annonce.setEtat(10);
