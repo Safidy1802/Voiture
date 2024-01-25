@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     JwtUtils utils;
 
-    @GetMapping("/signup")
+    @PostMapping("/signup")
     public ResponseEntity<String> signup(HttpServletRequest request) {
         try {
             User user = new User();
@@ -37,7 +37,7 @@ public class UserController {
             String token = utils.generateJwtToken(user);
             String responseJson = "{\"token\":\"" + token + "\", \"id\":\"" + user.getId() + "\"}";
 
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(responseJson);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Une erreur s'est produite lors de l'inscription");
