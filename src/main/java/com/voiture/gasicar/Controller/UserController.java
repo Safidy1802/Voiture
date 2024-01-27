@@ -50,7 +50,7 @@ public class UserController {
         user = user.login(request.getParameter("email"), request.getParameter("password"));
         if (user != null) {
             String token = utils.generateJwtToken(user);
-            String responseJson = "{\"token\":\"" + token + "\", \"id\":\"" + user.getId() + "\"}";
+            String responseJson = "{\"token\":\"" + token + "\"}";
 
             return ResponseEntity.ok(responseJson);
         } else {
