@@ -102,26 +102,22 @@ create table equipement_voiture (
     id_equipement integer references equipement(id)
 );
 
+create view v_voiture_equipement as
+select voiture.id as id_voiture, equipement.nom as equipement from equipement_voiture
+join equipement on equipement_voiture.id_equipement=equipement.id;
+
 create table annonce (
     id serial primary key,
     id_voiture integer references voiture(id),
     prix float,
     descriptions text,
-    date_annonce date default current_date(),
+    date_annonce date default current_date,
     etat integer
 );
 
--- create table annonce_valider (
---     id serial primary key,
---     id_annonce integer references annonce(id),
---     date_validation date default current_date()
--- );
-
--- create table annonce_refuser (
---     id serial primary key,
---     id_annonce integer references annonce(id),
---     date_refus date default current_date()
--- );
+create view v_voiture_annonce_details as
+select annonce.id as id_annonce, v_voiture.*, annonce.prix, annonce.descriptions, annonce.date_annonce from annonce
+join v_voiture on annonce.id_voiture=v_voiture.id;
 
 create table annonce_favoris (
     id serial primary key,

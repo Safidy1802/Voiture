@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.voiture.gasicar.Dao.Column;
 import com.voiture.gasicar.Dao.Connector;
@@ -27,6 +29,58 @@ public class Annonce extends DAO{
     Integer etat;
     
     public Annonce() {
+    }
+
+    public Integer getNbrAnnonceParEtat(Connection co, Integer etat) throws Exception {
+        Integer isa = null;
+        boolean nisokatra = false;
+        if (co == null) {
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
+            nisokatra = true;
+        }
+        String sql = "select count(*) as isa from annonce where etat = "+etat+"";
+        Statement state = co.createStatement();
+        ResultSet res = state.executeQuery(sql);
+        if (res.next()) {
+            isa = res.getInt("isa");
+        }
+        if (nisokatra) {
+            try {
+                co.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return isa;
+    }
+
+    public List<Annonce> getAllAnnonceParEtat(Connection co, Integer etat) throws Exception{
+        List<Annonce> list = new ArrayList<>();
+        boolean nisokatra = false;
+        if (co == null) {
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
+            nisokatra = true;
+        }
+        String sql = "select * from annonce where etat="+etat+"";
+        Statement state = co.createStatement();
+        ResultSet res = state.executeQuery(sql);
+        while (res.next()) {
+            Annonce ano = new Annonce();
+            ano.setId(res.getInt("id"));
+            ano.setVoiture(res.getInt("id_voiture"));
+            ano.setDescription(res.getString("descriptions"));
+            ano.setPrix(res.getFloat("prix"));
+            ano.setDate_annonce(res.getDate("date_annonce"));
+            list.add(ano);
+        }
+        if (nisokatra) {
+            try {
+                co.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 
     public Integer getIdLastVoiture(Connection co) throws Exception {
