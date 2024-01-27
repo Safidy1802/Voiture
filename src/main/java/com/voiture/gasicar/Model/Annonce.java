@@ -62,6 +62,7 @@ public class Annonce extends DAO{
             nisokatra = true;
         }
         String sql = "select * from annonce where etat="+etat+"";
+        System.out.println(sql);
         Statement state = co.createStatement();
         ResultSet res = state.executeQuery(sql);
         while (res.next()) {
