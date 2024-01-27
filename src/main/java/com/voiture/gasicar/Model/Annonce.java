@@ -72,6 +72,7 @@ public class Annonce extends DAO{
             ano.setDescription(res.getString("descriptions"));
             ano.setPrix(res.getFloat("prix"));
             ano.setDate_annonce(res.getDate("date_annonce"));
+            ano.setEtat(res.getInt("etat"));
             list.add(ano);
         }
         if (nisokatra) {
