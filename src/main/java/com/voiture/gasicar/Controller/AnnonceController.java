@@ -1,5 +1,6 @@
 package com.voiture.gasicar.Controller;
 
+import java.util.List;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,11 +105,11 @@ public class AnnonceController {
 
     @GetMapping("/annonceValider")
     @Authority(role = Role.USER)
-    public Vector<Annonce> getAllValidated() throws Exception{
+    public List<Annonce> getAllValidated() throws Exception{
         Annonce annonce = new Annonce();
-        annonce.setEtat(10);
-        Vector<Annonce> valide = annonce.select(null);
-        return valide;
+        Integer etat = 10;
+        List<Annonce> listeV = annonce.getAllAnnonceParEtat(null, etat);
+        return listeV;
     }
 
     @GetMapping("/annonceRefuser")
