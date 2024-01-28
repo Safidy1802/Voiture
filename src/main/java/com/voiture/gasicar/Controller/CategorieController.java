@@ -37,7 +37,7 @@ public class CategorieController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public Categorie saveCategorie(@RequestBody Categorie Categorie) {
+    public Categorie saveCategorie(@RequestParam Categorie Categorie) {
         return CategorieService.saveCategorie(Categorie);
     }
 
