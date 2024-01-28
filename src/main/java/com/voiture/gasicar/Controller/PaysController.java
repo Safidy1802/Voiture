@@ -32,8 +32,10 @@ public class PaysController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<Pays> createPays(@RequestBody Pays pays) {
-        Pays createdPays = paysService.createPays(pays);
+    public ResponseEntity<Pays> createPays(@RequestParam("nom") String pays) {
+        Pays createdPays = new Pays();
+        createdPays.setNom(pays);
+        paysService.createPays(createdPays);
         return ResponseEntity.ok(createdPays);
     }
 

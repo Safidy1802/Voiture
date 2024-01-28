@@ -32,8 +32,10 @@ public class CouleurController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<Couleur> createCouleur(@RequestBody Couleur couleur) {
-        Couleur createdCouleur = couleurService.createCouleur(couleur);
+    public ResponseEntity<Couleur> createCouleur(@RequestParam("nom") String couleur) {
+        Couleur createdCouleur = new Couleur();
+        createdCouleur.setNom(couleur);
+        couleurService.createCouleur(createdCouleur);
         return ResponseEntity.ok(createdCouleur);
     }
 

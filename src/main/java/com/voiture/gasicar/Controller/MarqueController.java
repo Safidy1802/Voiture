@@ -32,8 +32,10 @@ public class MarqueController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<Marque> createMarque(@RequestBody Marque marque) {
-        Marque createdMarque = marqueService.createMarque(marque);
+    public ResponseEntity<Marque> createMarque(@RequestParam("nom") String marque) {
+        Marque createdMarque = new Marque();
+        createdMarque.setNom(marque);
+        marqueService.createMarque(createdMarque);
         return ResponseEntity.ok(createdMarque);
     }
 

@@ -10,9 +10,7 @@ public class MarqueModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_marque", nullable = false)
-    private Marque marque;
+    private Integer marque;
 
     private String nomModel;
 
@@ -24,11 +22,11 @@ public class MarqueModel {
         this.id = id;
     }
 
-    public Marque getMarque() {
+    public Integer getMarque() {
         return marque;
     }
 
-    public void setMarque(Marque marque) {
+    public void setMarque(Integer marque) {
         this.marque = marque;
     }
 

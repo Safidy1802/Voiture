@@ -32,8 +32,10 @@ public class TransmissionController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<Transmission> createTransmission(@RequestBody Transmission transmission) {
-        Transmission createdTransmission = transmissionService.createTransmission(transmission);
+    public ResponseEntity<Transmission> createTransmission(@RequestParam("nom") String transmission) {
+        Transmission createdTransmission = new Transmission();
+        createdTransmission.setNom(transmission);
+        transmissionService.createTransmission(createdTransmission);
         return ResponseEntity.ok(createdTransmission);
     }
 

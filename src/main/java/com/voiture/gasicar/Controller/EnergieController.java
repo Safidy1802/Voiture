@@ -32,8 +32,10 @@ public class EnergieController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<Energie> createEnergie(@RequestBody Energie energie) {
-        Energie createdEnergie = energieService.createEnergie(energie);
+    public ResponseEntity<Energie> createEnergie(@RequestParam("nom") String energie) {
+        Energie createdEnergie = new Energie();
+        createdEnergie.setNom(energie);
+        energieService.createEnergie(createdEnergie);
         return ResponseEntity.ok(createdEnergie);
     }
 
