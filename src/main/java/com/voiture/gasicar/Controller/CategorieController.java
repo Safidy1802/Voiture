@@ -1,11 +1,5 @@
 package com.voiture.gasicar.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.voiture.gasicar.Model.Categorie;
 import com.voiture.gasicar.Security.Authority;
 import com.voiture.gasicar.Security.Role;
@@ -37,8 +31,10 @@ public class CategorieController {
 
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
-    public Categorie saveCategorie(@RequestParam Categorie Categorie) {
-        return CategorieService.saveCategorie(Categorie);
+    public Categorie saveCategorie(@RequestParam("nom_categorie") String nomCategorie) {
+        Categorie categorie = new Categorie();
+        categorie.setNom_categorie(nomCategorie);
+        return CategorieService.saveCategorie(categorie);
     }
 
     @DeleteMapping("/delete/{id}")
