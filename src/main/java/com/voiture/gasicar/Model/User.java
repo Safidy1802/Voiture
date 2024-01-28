@@ -59,6 +59,7 @@ public class User extends DAO {
             nisokatra = true;
         }
         String sql = "Select * from users where email = '" + email + "' and password = '" + mdp + "'";
+        System.out.println(sql);
         Statement state = co.createStatement();
         ResultSet res = state.executeQuery(sql);
         if (res.next()) {
@@ -72,7 +73,11 @@ public class User extends DAO {
         if (nisokatra) {
             co.close();
         }
-        return user;
+        if (email.equals(user.getEmail()) && mdp.equals(user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
 
     public String getId() {
