@@ -21,10 +21,20 @@ public class Voiture_annonce_detailsController {
         return vad;
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/valide")
     public Vector<Voiture_annonce_details> getAllVoitureAnnonceValider() throws Exception{
         Voiture_annonce_details vaa = new Voiture_annonce_details();
         vaa.setEtat(10);
+        Vector<Voiture_annonce_details> vad = vaa.select(null);
+        return vad;
+    }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("/annonceNonValide")
+    public Vector<Voiture_annonce_details> getAllVoitureAnnonceNonValider() throws Exception{
+        Voiture_annonce_details vaa = new Voiture_annonce_details();
+        vaa.setEtat(0);
         Vector<Voiture_annonce_details> vad = vaa.select(null);
         return vad;
     }
