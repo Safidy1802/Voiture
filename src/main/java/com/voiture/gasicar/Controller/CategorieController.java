@@ -29,6 +29,7 @@ public class CategorieController {
         return CategorieService.getCategorieById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public Categorie saveCategorie(@RequestParam("nom_categorie") String nomCategorie) {
