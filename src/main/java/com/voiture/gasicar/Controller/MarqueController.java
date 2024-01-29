@@ -30,6 +30,7 @@ public class MarqueController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Marque> createMarque(@RequestParam("nom") String marque) {

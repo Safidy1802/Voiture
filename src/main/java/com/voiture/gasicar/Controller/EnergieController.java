@@ -30,6 +30,7 @@ public class EnergieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Energie> createEnergie(@RequestParam("nom") String energie) {

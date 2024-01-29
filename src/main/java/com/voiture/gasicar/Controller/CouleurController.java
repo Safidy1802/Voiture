@@ -30,6 +30,7 @@ public class CouleurController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Couleur> createCouleur(@RequestParam("nom") String couleur) {
