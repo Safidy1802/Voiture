@@ -50,10 +50,7 @@ public class UserController {
         User user = new User();
         user = user.login(email, password);
         if (user != null) {
-            String token = utils.generateJwtToken(user);
-            String responseJson = "{\"token\":\"" + token + "\"}";
-
-            return ResponseEntity.ok(responseJson);
+            
         } else {
             return ResponseEntity.status(401).body("Authentification échouée : Verifier votre email et mot de passe");
         }
