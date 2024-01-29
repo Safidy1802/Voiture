@@ -20,7 +20,7 @@ public class Voiture_annonce_detailsController {
     private Voiture_annonce_detailService vaservice;
 
     @GetMapping("/voir")
-    public Vector<Voiture_annonce_details> getAllVoitureAnnonce_details(){
+    public Vector<Voiture_annonce_details> getAllVoitureAnnonce_details() throws Exception{
         Vector<Voiture_annonce_details> vad = new Voiture_annonce_details().select(null);
         return vad;
     }
