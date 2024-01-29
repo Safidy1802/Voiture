@@ -116,12 +116,12 @@ create table annonce (
 );
 
 create view v_voiture_annonce_details as
-select annonce.id as id_annonce, v_voiture.*, annonce.prix, annonce.descriptions, annonce.date_annonce from annonce
+select annonce.id as id_annonce, v_voiture.*, annonce.prix, annonce.descriptions, annonce.date_annonce, annonce.etat from annonce
 join v_voiture on annonce.id_voiture=v_voiture.id;
 
 create table annonce_favoris (
     id serial primary key,
     id_user integer references user(id),
     id_annonce integer references annonce(id),
-    date_ajout date default current_date()
+    date_ajout date default current_date
 );

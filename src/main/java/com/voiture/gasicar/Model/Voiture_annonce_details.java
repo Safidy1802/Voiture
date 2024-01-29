@@ -46,6 +46,9 @@ public class Voiture_annonce_details extends DAO{
     String description;
     @Column(name = "date_annonce")
     Date date_annonce;
+    @Column(name = "etat")
+    Integer etat;
+
     public Integer getId_annonce() {
         return id_annonce;
     }
@@ -159,5 +162,11 @@ public class Voiture_annonce_details extends DAO{
     }
     public void setDate_annonce(Date date_annonce) {
         this.date_annonce = date_annonce;
+    }
+    public Integer getEtat() {
+        return etat;
+    }
+    public void setEtat(Integer etat) {
+        this.etat = etat;
     }
 }
