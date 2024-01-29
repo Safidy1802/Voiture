@@ -30,7 +30,7 @@ public class CouleurController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Couleur> createCouleur(@RequestParam("nom") String couleur) {

@@ -30,6 +30,7 @@ public class TransmissionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Transmission> createTransmission(@RequestParam("nom") String transmission) {

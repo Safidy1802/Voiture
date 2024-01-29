@@ -30,6 +30,7 @@ public class PaysController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Pays> createPays(@RequestParam("nom") String pays) {

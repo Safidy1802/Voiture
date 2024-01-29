@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +68,7 @@ public class AnnonceController {
         }
     }
 
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @PostMapping("/validation/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<String> validationAnnonce(@PathVariable Integer id){
@@ -85,6 +87,7 @@ public class AnnonceController {
         }
     }
 
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @PostMapping("/refus/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<String> refusAnnonce(@PathVariable Integer id){

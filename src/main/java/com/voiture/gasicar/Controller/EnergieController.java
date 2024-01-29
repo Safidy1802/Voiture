@@ -30,7 +30,7 @@ public class EnergieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Energie> createEnergie(@RequestParam("nom") String energie) {

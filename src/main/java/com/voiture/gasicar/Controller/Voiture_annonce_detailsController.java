@@ -3,13 +3,9 @@ package com.voiture.gasicar.Controller;
 import java.util.List;
 import java.util.Vector;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.voiture.gasicar.Model.Voiture_annonce_details;
-import com.voiture.gasicar.Security.Authority;
-import com.voiture.gasicar.Security.Role;
 
 @RestController
 @RequestMapping("/api/annonce_details")
@@ -21,7 +17,7 @@ public class Voiture_annonce_detailsController {
         return vad;
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @GetMapping("/valide")
     public Vector<Voiture_annonce_details> getAllVoitureAnnonceValider() throws Exception{
         Voiture_annonce_details vaa = new Voiture_annonce_details();
@@ -30,7 +26,7 @@ public class Voiture_annonce_detailsController {
         return vad;
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
     @GetMapping("/annonceNonValide")
     public Vector<Voiture_annonce_details> getAllVoitureAnnonceNonValider() throws Exception{
         Voiture_annonce_details vaa = new Voiture_annonce_details();
