@@ -69,7 +69,7 @@ public class AnnonceController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/validation/{id}")
+    @GetMapping("/validation/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<String> validationAnnonce(@PathVariable Integer id){
         try {
@@ -88,7 +88,7 @@ public class AnnonceController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/refus/{id}")
+    @GetMapping("/refus/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<String> refusAnnonce(@PathVariable Integer id){
         try {
