@@ -1,6 +1,7 @@
 package com.voiture.gasicar.Controller;
 
 import java.util.List;
+import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ public class Voiture_annonce_detailsController {
     private Voiture_annonce_detailService vaservice;
 
     @GetMapping("/voir")
-    public List<Voiture_annonce_details> getAllVoitureAnnonce_details(){
-        return vaservice.getAllAnnonce_details();
+    public Vector<Voiture_annonce_details> getAllVoitureAnnonce_details(){
+        Vector<Voiture_annonce_details> vad = new Voiture_annonce_details().select(null);
+        return vad;
     }
 }
