@@ -20,4 +20,12 @@ public class Voiture_annonce_detailsController {
         Vector<Voiture_annonce_details> vad = new Voiture_annonce_details().select(null);
         return vad;
     }
+
+    @GetMapping("/valide")
+    public Vector<Voiture_annonce_details> getAllVoitureAnnonceValider() throws Exception{
+        Voiture_annonce_details vaa = new Voiture_annonce_details();
+        vaa.setEtat(10);
+        Vector<Voiture_annonce_details> vad = vaa.select(null);
+        return vad;
+    }
 }
