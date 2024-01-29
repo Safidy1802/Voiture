@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.voiture.gasicar.Model.User;
@@ -45,9 +46,9 @@ public class UserController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<String> singin(HttpServletRequest request) throws Exception {
+    public ResponseEntity<String> singin(@RequestParam("email") String email, @RequestParam("password") String password) throws Exception {
         User user = new User();
-        user = user.login(request.getParameter("email"), request.getParameter("password"));
+        user = user.login(email, password);
         if (user != null) {
             String token = utils.generateJwtToken(user);
             String responseJson = "{\"token\":\"" + token + "\"}";
