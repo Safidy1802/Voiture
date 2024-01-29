@@ -30,7 +30,7 @@ public class MarqueController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Marque> createMarque(@RequestParam("nom") String marque) {

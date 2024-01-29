@@ -17,7 +17,7 @@ public class Voiture_annonce_detailsController {
         return vad;
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @GetMapping("/valide")
     public Vector<Voiture_annonce_details> getAllVoitureAnnonceValider() throws Exception{
         Voiture_annonce_details vaa = new Voiture_annonce_details();
@@ -26,7 +26,7 @@ public class Voiture_annonce_detailsController {
         return vad;
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @GetMapping("/annonceNonValide")
     public Vector<Voiture_annonce_details> getAllVoitureAnnonceNonValider() throws Exception{
         Voiture_annonce_details vaa = new Voiture_annonce_details();

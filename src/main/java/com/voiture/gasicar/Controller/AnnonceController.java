@@ -68,7 +68,7 @@ public class AnnonceController {
         }
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @PostMapping("/validation/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<String> validationAnnonce(@PathVariable Integer id){
@@ -87,7 +87,7 @@ public class AnnonceController {
         }
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @PostMapping("/refus/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<String> refusAnnonce(@PathVariable Integer id){

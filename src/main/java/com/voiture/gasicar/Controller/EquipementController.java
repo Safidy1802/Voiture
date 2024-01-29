@@ -26,13 +26,13 @@ public class EquipementController {
     @Autowired
     private EquipementService EquipementService;
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @GetMapping("/voir")
     public List<Equipement> getAllEquipements() {
         return EquipementService.getAllEquipements();
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @GetMapping("/voir/{id}")
     public ResponseEntity<Equipement> getEquipementById(@PathVariable Integer id) {
         return EquipementService.getEquipementById(id)
@@ -50,7 +50,7 @@ public class EquipementController {
         return ResponseEntity.ok(createdEquipement);
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @PutMapping("/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Equipement> updateEquipement(@PathVariable Integer id, @RequestBody Equipement updatedEquipement) {
@@ -58,7 +58,7 @@ public class EquipementController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app")
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/delete/{id}")
     @Authority(role = Role.ADMIN)
     public ResponseEntity<Void> deleteEquipement(@PathVariable Integer id) {

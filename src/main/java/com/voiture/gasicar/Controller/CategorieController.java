@@ -29,7 +29,7 @@ public class CategorieController {
         return CategorieService.getCategorieById(id);
     }
 
-    @CrossOrigin(origins = "https://profound-cucurucho-3462bb.netlify.app") //this is the origin
+    @CrossOrigin(origins = "*") //this is the origin
     @PostMapping("/insert")
     @Authority(role = Role.ADMIN)
     public Categorie saveCategorie(@RequestParam("nom_categorie") String nomCategorie) {
