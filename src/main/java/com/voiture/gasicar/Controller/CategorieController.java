@@ -19,7 +19,6 @@ public class CategorieController {
     private CategorieService CategorieService;
 
     @GetMapping("/voir")
-    @Authority(role = Role.ADMIN)
     public List<Categorie> getAllCategories() {
         return CategorieService.getAllCategories();
     }
