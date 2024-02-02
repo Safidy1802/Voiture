@@ -146,9 +146,9 @@ public class AnnonceController {
 
     @GetMapping("/annonceValider")
     public Vector<Annonce> getAllValidated() throws Exception{
-        Annonce annonce = new Annonce();
-        annonce.setEtat(10);
-        Vector<Annonce> liste = annonce.select(null);
+        Voiture_annonce_details voiture = new Voiture_annonce_details();
+        voiture.setEtat(10);
+        Vector<Annonce> liste = voiture.select(null);
         return liste;
     }
 
