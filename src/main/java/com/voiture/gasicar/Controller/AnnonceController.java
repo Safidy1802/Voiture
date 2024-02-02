@@ -1,5 +1,6 @@
 package com.voiture.gasicar.Controller;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.voiture.gasicar.Model.Annonce;
+import com.voiture.gasicar.Model.AnnonceFavoris;
 import com.voiture.gasicar.Model.User;
 import com.voiture.gasicar.Model.Voiture;
+import com.voiture.gasicar.Model.Voiture_annonce_details;
 import com.voiture.gasicar.Security.Authority;
 import com.voiture.gasicar.Security.JwtUtils;
 import com.voiture.gasicar.Security.MyContext;
@@ -55,6 +58,7 @@ public class AnnonceController {
                 annonce.setVoiture(id_voiture);
                 annonce.setPrix(Float.valueOf(request.getParameter("prix")));
                 annonce.setDescription(request.getParameter("description"));
+                annonce.setStatus(20);
                 annonce.setEtat(0);
                 annonce.insert(null);
                 return ResponseEntity.ok().body("Votre annonce est bien enregistrer!!");
@@ -106,6 +110,40 @@ public class AnnonceController {
         }
     }
 
+    @PostMapping("/favoris/{id}")
+    @Authority(role = Role.USER)
+    public ResponseEntity<String> ajoutFavoris(@PathVariable Integer id){
+        try {
+            AnnonceFavoris favoris = new AnnonceFavoris();
+            User user = MyContext.getUser();
+            if (user != null) {
+                favoris.setId_user(user.getId());
+                favoris.setId_annonce(id);
+                favoris.insert(null);
+                return ResponseEntity.ok().body("Annonce ajouter dans votre liste de favoris");
+            } else {
+                return ResponseEntity.badRequest().body("Une erreur est survenu, veillez vous reconnecter");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Une erreur s'est produite");
+        }
+    }
+
+    @PostMapping("/status/{id}")
+    @Authority(role = Role.USER)
+    public ResponseEntity<String> statusannonce(@PathVariable Integer id){
+        try {
+            Annonce annonce = new Annonce();
+            annonce.modificationStatusVendu(null, id);
+            return ResponseEntity.ok().body("Voiture vendu");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Une erreur s'est produit");
+        }
+
+    }
+
     @GetMapping("/annonceValider")
     @Authority(role = {Role.USER,Role.ADMIN})
     public List<Annonce> getAllValidated() throws Exception{
@@ -124,6 +162,18 @@ public class AnnonceController {
         return refus;
     }
 
-
+    @GetMapping("/listeannonce")
+    @Authority(role = Role.USER)
+    public Vector<Voiture_annonce_details> getAllAnnonceUser() throws Exception{
+        Voiture_annonce_details voiture = new Voiture_annonce_details();
+        User user = MyContext.getUser();
+        if (user != null) {
+            voiture.setId_user(user.getId());
+            Vector<Voiture_annonce_details> all = voiture.select(null);
+            return all;
+        } else {
+            return null;
+        }
+    }
 
 }

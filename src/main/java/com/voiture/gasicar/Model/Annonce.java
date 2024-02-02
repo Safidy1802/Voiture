@@ -25,6 +25,8 @@ public class Annonce extends DAO{
     String description;
     @Column(name = "date_annonce")
     Date date_annonce;
+    @Column(name = "status")
+    Integer status;
     @Column(name = "etat")
     Integer etat;
     
@@ -131,6 +133,25 @@ public class Annonce extends DAO{
         return i;
     }
 
+    public void modificationStatusVendu(Connection co, Integer id_annonce) throws Exception{
+        boolean nisokatra = false;
+        if (co == null) {
+            co = new Connector().postgresql("Safidimalala54", "yqs1NltKOUn5", "gasycar");
+            nisokatra = true;
+        }
+        String sql = "update annonce set status = 30 where id='"+id_annonce+"'";
+        Statement state = co.createStatement();
+        state.execute(sql);
+        co.commit();
+        if (nisokatra) {
+            try {
+                co.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void validateAnnonce(Connection co, Integer id_annonce) throws Exception {
         boolean nisokatra = false;
         if (co == null) {
@@ -204,6 +225,14 @@ public class Annonce extends DAO{
     }
     public void setEtat(Integer etat) {
         this.etat = etat;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
     
 }

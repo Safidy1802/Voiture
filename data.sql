@@ -112,16 +112,20 @@ create table annonce (
     prix float,
     descriptions text,
     date_annonce date default current_date,
+    status integer,
     etat integer
 );
+--status 20 non vendu 30 vendu
 
 create view v_voiture_annonce_details as
-select annonce.id as id_annonce, v_voiture.*, annonce.prix, annonce.descriptions, annonce.date_annonce, annonce.etat from annonce
+select annonce.id as id_annonce, v_voiture.*, annonce.prix, annonce.descriptions, annonce.date_annonce, annonce.status, annonce.etat from annonce
 join v_voiture on annonce.id_voiture=v_voiture.id;
 
 create table annonce_favoris (
     id serial primary key,
-    id_user integer references user(id),
+    id_user varchar(60) references users(id),
     id_annonce integer references annonce(id),
     date_ajout date default current_date
 );
+
+create table annonce_status
