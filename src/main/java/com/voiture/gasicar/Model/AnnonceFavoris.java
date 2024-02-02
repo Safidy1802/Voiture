@@ -6,7 +6,7 @@ import com.voiture.gasicar.Dao.Column;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
 
-@TableInfo(name = "users", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
+@TableInfo(name = "annoncefavoris", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class AnnonceFavoris extends DAO{
     @Column(isPrimary = true, name = "id")
     Integer id;
