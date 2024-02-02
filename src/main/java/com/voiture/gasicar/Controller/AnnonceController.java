@@ -145,12 +145,11 @@ public class AnnonceController {
     }
 
     @GetMapping("/annonceValider")
-    @Authority(role = {Role.USER,Role.ADMIN})
-    public List<Annonce> getAllValidated() throws Exception{
+    public Vector<Annonce> getAllValidated() throws Exception{
         Annonce annonce = new Annonce();
-        Integer etat = 10;
-        List<Annonce> listeV = annonce.getAllAnnonceParEtat(null, etat);
-        return listeV;
+        annonce.setEtat(10);
+        Vector<Annonce> liste = annonce.select(null);
+        return liste;
     }
 
     @GetMapping("/annonceRefuser")
