@@ -63,7 +63,8 @@ public class AnnonceController {
                 annonce.insert(null);
                 return ResponseEntity.ok().body("Votre annonce est bien enregistrer!!");
             } else {
-                return ResponseEntity.badRequest().body("Votre voiture ne peut pas etre enregistrer, Veuillez vous connecter.");
+                return ResponseEntity.badRequest()
+                        .body("Votre voiture ne peut pas etre enregistrer, Veuillez vous connecter.");
             }
 
         } catch (Exception e) {
@@ -75,7 +76,7 @@ public class AnnonceController {
     @CrossOrigin(origins = "*")
     @PostMapping("/validation/{id}")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<String> validationAnnonce(@PathVariable Integer id){
+    public ResponseEntity<String> validationAnnonce(@PathVariable Integer id) {
         try {
             Annonce annonce = new Annonce();
             Integer etat = annonce.getEtatAnnonce(null, id);
@@ -94,7 +95,7 @@ public class AnnonceController {
     @CrossOrigin(origins = "*")
     @PostMapping("/refus/{id}")
     @Authority(role = Role.ADMIN)
-    public ResponseEntity<String> refusAnnonce(@PathVariable Integer id){
+    public ResponseEntity<String> refusAnnonce(@PathVariable Integer id) {
         try {
             Annonce annonce = new Annonce();
             Integer etat = annonce.getEtatAnnonce(null, id);
@@ -112,7 +113,7 @@ public class AnnonceController {
 
     @PostMapping("/favoris/{id}")
     @Authority(role = Role.USER)
-    public ResponseEntity<String> ajoutFavoris(@PathVariable Integer id){
+    public ResponseEntity<String> ajoutFavoris(@PathVariable Integer id) {
         try {
             AnnonceFavoris favoris = new AnnonceFavoris();
             User user = MyContext.getUser();
@@ -132,7 +133,7 @@ public class AnnonceController {
 
     @PostMapping("/status/{id}")
     @Authority(role = Role.USER)
-    public ResponseEntity<String> statusannonce(@PathVariable Integer id){
+    public ResponseEntity<String> statusannonce(@PathVariable Integer id) {
         try {
             Annonce annonce = new Annonce();
             annonce.modificationStatusVendu(null, id);
@@ -145,7 +146,7 @@ public class AnnonceController {
     }
 
     @GetMapping("/annonceValider")
-    public Vector<Annonce> getAllValidated() throws Exception{
+    public Vector<Annonce> getAllValidated() throws Exception {
         Voiture_annonce_details voiture = new Voiture_annonce_details();
         voiture.setEtat(10);
         Vector<Annonce> liste = voiture.select(null);
@@ -154,7 +155,7 @@ public class AnnonceController {
 
     @GetMapping("/annonceRefuser")
     @Authority(role = Role.ADMIN)
-    public List<Annonce> getAllRefused() throws Exception{
+    public List<Annonce> getAllRefused() throws Exception {
         Annonce annonce = new Annonce();
         Integer etat = 5;
         List<Annonce> refus = annonce.getAllAnnonceParEtat(null, etat);
@@ -163,7 +164,7 @@ public class AnnonceController {
 
     @GetMapping("/listeannonce")
     @Authority(role = Role.USER)
-    public Vector<Voiture_annonce_details> getAllAnnonceUser() throws Exception{
+    public Vector<Voiture_annonce_details> getAllAnnonceUser() throws Exception {
         Voiture_annonce_details voiture = new Voiture_annonce_details();
         User user = MyContext.getUser();
         if (user != null) {
@@ -173,6 +174,18 @@ public class AnnonceController {
         } else {
             return null;
         }
+    }
+
+    @GetMapping("/recherche")
+    public Vector<Voiture_annonce_details> getResultsRecherche(HttpServletRequest req) throws Exception {
+        Voiture_annonce_details voiture = new Voiture_annonce_details();
+        Vector<Voiture_annonce_details> result = voiture.annonceAvancer(null, req.getParameter("marque"),
+                req.getParameter("model"), req.getParameter("categorie"), req.getParameter("transmission"),
+                req.getParameter("couleur"), req.getParameter("energie"), req.getParameter("pays"),
+                req.getParameter("annee"), req.getParameter("consommation"), req.getParameter("reservoir"),
+                req.getParameter("place"), req.getParameter("kmmax"), req.getParameter("prixmax"),
+                req.getParameter("date_annonce"));
+                return result;
     }
 
 }
