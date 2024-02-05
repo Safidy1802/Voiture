@@ -20,10 +20,10 @@ public class User extends DAO {
     String prenom;
     @Column(name = "email")
     String email;
-    @Column(name = "password")
-    String password;
     @Column(name = "role")
     String role;
+    @Column(name = "password")
+    String password;
 
     public Integer getUserByMail(String email, String password) throws Exception {
         Integer i = null;
