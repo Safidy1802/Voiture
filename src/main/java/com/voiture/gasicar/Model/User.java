@@ -42,6 +42,9 @@ public class User extends DAO {
         this.role = role;
     }
 
+    public User() {
+    }
+
     public Integer getUserByMail(String email, String password) throws Exception {
         Integer i = null;
         Connection co = null;
