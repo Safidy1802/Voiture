@@ -185,6 +185,8 @@ public class AnnonceController {
                 req.getParameter("annee"), req.getParameter("consommation"), req.getParameter("reservoir"),
                 req.getParameter("place"), req.getParameter("kmmax"), req.getParameter("prixmax"),
                 req.getParameter("date_annonce"));
+                System.out.println("Atoo!");
+                System.out.println(req.getParameter("marque"));
                 return result;
     }
 
