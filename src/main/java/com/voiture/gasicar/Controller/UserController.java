@@ -1,5 +1,7 @@
 package com.voiture.gasicar.Controller;
 
+import java.util.Vector;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +45,13 @@ public class UserController {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Une erreur s'est produite lors de l'inscription");
         }
+    }
+
+    @GetMapping("/voir")
+    public Vector<User> getAllUser() throws Exception{
+        User u = new User();
+        Vector<User> all = u.select(null);
+        return all;
     }
 
     @PostMapping("/signin")
