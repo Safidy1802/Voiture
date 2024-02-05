@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.voiture.gasicar.Dao.Column;
 import com.voiture.gasicar.Dao.Connector;
 import com.voiture.gasicar.Dao.DAO;
@@ -24,6 +26,21 @@ public class User extends DAO {
     String password;
     @Column(name = "role")
     String role;
+
+    @JsonCreator
+    public User(@JsonProperty("id") String id, 
+                @JsonProperty("nom") String nom, 
+                @JsonProperty("prenom") String prenom, 
+                @JsonProperty("email") String email, 
+                @JsonProperty("password") String password, 
+                @JsonProperty("role") String role) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public Integer getUserByMail(String email, String password) throws Exception {
         Integer i = null;
