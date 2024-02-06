@@ -177,6 +177,21 @@ public class AnnonceController {
         }
     }
 
+    @CrossOrigin(origins = "*")
+    @GetMapping("/listeannonce/{id_voiture}")
+    @Authority(role = Role.USER)
+    public Vector<Voiture_annonce_details> getAllAnnonceUserByIdVoiture(@PathVariable Integer id_voiture) throws Exception {
+        Voiture_annonce_details voiture = new Voiture_annonce_details();
+        User user = MyContext.getUser();
+        if (user != null) {
+            voiture.setId_voiture(id_voiture);
+            Vector<Voiture_annonce_details> all = voiture.select(null);
+            return all;
+        } else {
+            return null;
+        }
+    }
+
     @GetMapping("/recherche")
     public Vector<Voiture_annonce_details> getResultsRecherche(HttpServletRequest req) throws Exception {
         Voiture_annonce_details voiture = new Voiture_annonce_details();
