@@ -128,4 +128,10 @@ create table annonce_favoris (
     date_ajout date default current_date
 );
 
+CREATE table voiture_photo(
+    id serial primary  key,
+    id_voiture int references voiture(id),
+    photo text
+);
+
 create table annonce_status
