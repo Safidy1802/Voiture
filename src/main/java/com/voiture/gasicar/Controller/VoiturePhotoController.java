@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,16 @@ public class VoiturePhotoController {
             return ResponseEntity.ok().build();
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload photo");
+        }
+    }
+
+    @GetMapping("/voiture-photo/{idVoiture}")
+    public ResponseEntity<String> getPhotoByIdVoiture(@PathVariable("idVoiture") Integer idVoiture) {
+        String photoBase64 = voiturePhotoService.getPhotoByIdVoiture(idVoiture);
+        if (photoBase64 != null) {
+            return ResponseEntity.ok().body(photoBase64);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 }
