@@ -162,6 +162,7 @@ public class AnnonceController {
         return refus;
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/listeannonce")
     @Authority(role = Role.USER)
     public Vector<Voiture_annonce_details> getAllAnnonceUser() throws Exception {
