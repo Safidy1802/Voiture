@@ -32,13 +32,10 @@ public class VoiturePhotoController {
     }
 
     @GetMapping("/voiture-photo/{idVoiture}")
-    public ResponseEntity<String> getPhotoByIdVoiture(@PathVariable("idVoiture") Integer idVoiture) {
-        String photoBase64 = voiturePhotoService.getPhotoByIdVoiture(idVoiture);
-        if (photoBase64 != null) {
-            return ResponseEntity.ok().body(photoBase64);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<String> getPhotoUrlByIdVoiture(@PathVariable Integer idVoiture) {
+        // Code pour récupérer l'URL de l'image à partir de l'ID de la voiture
+        String imageUrl = voiturePhotoService.getPhotoByIdVoiture(idVoiture);
+        return ResponseEntity.ok().body(imageUrl);
     }
-}
 
+}
