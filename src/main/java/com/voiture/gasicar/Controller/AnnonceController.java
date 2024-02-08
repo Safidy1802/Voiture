@@ -212,6 +212,7 @@ public class AnnonceController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/insertPhoto")
     public ResponseEntity<String> insertPhotoVoiture(HttpServletRequest request){
         try {
