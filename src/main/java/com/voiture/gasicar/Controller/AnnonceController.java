@@ -145,6 +145,7 @@ public class AnnonceController {
 
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/annonceValider")
     public Vector<Annonce> getAllValidated() throws Exception {
         Voiture_annonce_details voiture = new Voiture_annonce_details();
