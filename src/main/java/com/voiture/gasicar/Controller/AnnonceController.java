@@ -23,6 +23,7 @@ import com.voiture.gasicar.Security.Authority;
 import com.voiture.gasicar.Security.JwtUtils;
 import com.voiture.gasicar.Security.MyContext;
 import com.voiture.gasicar.Security.Role;
+import com.voiture.gasicar.Service.VoiturePhotoService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -31,6 +32,8 @@ import jakarta.servlet.http.HttpServletRequest;
 public class AnnonceController {
     @Autowired
     JwtUtils utils;
+
+    VoiturePhotoService voiturePhotoService;
 
     @PostMapping("/insert")
     @Authority(role = Role.USER)
@@ -213,8 +216,9 @@ public class AnnonceController {
     public ResponseEntity<String> insertPhotoVoiture(HttpServletRequest request){
         try {
             VoiturePhoto vp = new  VoiturePhoto();
+            String str = this.voiturePhotoService.upload(request.getParameter("image"));
             vp.setIdVoiture(2);
-            vp.setPhoto(request.getParameter("image"));
+            vp.setPhoto(str);
             vp.insert(null);
             return ResponseEntity.ok().body("Voiture photo");
         } catch (Exception e) {
