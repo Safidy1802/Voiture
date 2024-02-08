@@ -18,7 +18,7 @@ public class VoiturePhoto {
 
     @Lob
     @Column(name = "photo")
-    private String photo; // Stockage de l'image en tant que base64
+    private String photo;
 
     public Integer getId() {
         return id;
