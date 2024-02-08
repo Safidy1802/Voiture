@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "car-vente",
+  "private_key_id": "d942112825238fa0296e385df9d053ccab87cfdb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDpXDp8L4PnaWLh\nI435hX6z4KZeenwgE/eTF/rb0yjckMedScjJ65Z22Vu5MYrrkK+VspkHGTwxPkjX\nitk9ddjpKGTynKG1Bj5vsYkAUCyG9kU9fhQxU4oG7oJWETvvLAmBfPcjDw+EeErs\nHky3O6zxXXNdkiVK/c8OW2A+4AgNqOV7T+07qqKtJfTY/ilCykwJbL0uGpfVk5Tn\nCBIZTZeEINEI2v3XVOghmyiHiRe9nasiPXopjymUFO9WTBXQYyduD5J81PkKnRQ5\nURunk42xlZCezBVGq3HgImXZVVKzMzxDtpy1arPKhEUoua94/Nx0DBafPYEt4WSk\nQA6GMCd9AgMBAAECggEAAItZWips/bw91/zxAWPXwFCShMyRWUtu3qHOx+rUt0Pv\nRjR0Zo7NedPHKsfjXF9QId/0mOB89dgk5OO+q+PKqp6D/LqvBrw1P9dGEyqGWSxN\n9CUL9B0gz5GfpWfNoHiypD5fP/0tKHjuaJqSTAEiA20X/tLs99TvwqZaIE+Qc5sx\n4jGR9icY99vLoV77Pz/WXr+lJIGDxiZw/xT7h+fXSM1AOtPF4wzO6a3fcNS+yhUX\nb/MB5eCv+KoLg2eqtBK6rF0f7MVstTv13RniXrRxPXPl33c+NO0RK8Ot/6ZpmzWp\n9PA3989DHTQNJ6tAFmJWvvB6DgGUz+wfypebPDY/IQKBgQD8T80cRvnRBoL+vadm\n+tKSU2HPgkKfFP0FM/y8nWC2Sc8OhYTKI2xU3Ttnt4FrxYEQ959z4naKRV//ps7p\nmWUz1kxXRBkf6GLNRCz0c/WVaf/7RDa8THDN4MdC/SWRXhxDPouqSNXqDePuU/p0\n729hnAZyZfBXUAGyxhrgBGyCXQKBgQDsxYHcPUV0tRR9q0POs5EfDuNbyCt0shV7\nKAFdVAUJB0PccI7i5/ldD0a9nxGX7imaYCV5yCgAjstRI7MVYIgSwrfMHpSKJTgk\nGeVBz57jqzrucV1oZDRqTbfULku+eYOlLvtL4NQ6g4ILgfdrKy0SiAOSwnkk3fHt\n31XZGQ4noQKBgQCMzIuNaB4ogxW+yl8MnJO9jEJc5jf/Rlsb+DLlnn1FvFKLq/66\nPqJJiVuJOWJDnee0bDrTFGFKMASuSYvV2AAduUzItfu/TpM0MQNVNxCo3Io40Ywp\n8A5TFUidHV9Fi9sBu3l9AUA+aJn1eW+eqa7iLYt7c193mfIYrWx57n4PEQKBgG/b\nCvNyGsr89RY9f8Y5/NgwX2av1R/HNfC9wI9Hry1Julx87HPz5VF6cxAIAvbEs/DT\ndUDoN0W0MAdAF02FEiPSy6Pp2oC8/p3HghAqNsUV0rxs4BT+KekCmFLsICp3G6NA\n48VADOMr15b6Kln9xshXa2C88SBinfWjqdnrRU2hAoGAHDGQTAHXTPjVagg9dyM3\ndtVCC8osgr0hVSqNi9tB23JP5ym/mLkVUSQ2K19ALKBDbvQGDz1f/ZLyJk1KewSb\n3xgsirjedIzE4A9nk7PrZoyiq/kNQrsIS4mK1TqSNdo7JoeONpFgrMCxVdtt0uIT\nxnAP9bIjRCfPLU/PYsuGtDA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-1lap5@car-vente.iam.gserviceaccount.com",
+  "client_id": "115343131022254856801",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-1lap5%40car-vente.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

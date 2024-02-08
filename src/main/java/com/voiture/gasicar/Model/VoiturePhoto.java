@@ -1,24 +1,18 @@
 package com.voiture.gasicar.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Lob;
-import jakarta.persistence.*;
+import com.voiture.gasicar.Dao.Column;
+import com.voiture.gasicar.Dao.DAO;
+import com.voiture.gasicar.Dao.TableInfo;
 
-@Entity
-@Table(name = "voiture_photo")
-public class VoiturePhoto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@TableInfo(name = "voiture_photo", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
+public class VoiturePhoto extends DAO{
+    @Column(name = "id", isPrimary = true)
     private Integer id;
 
     @Column(name = "id_voiture")
-    private Integer idVoiture;
-
-    @Lob
+    Integer idVoiture;
     @Column(name = "photo")
-    private String photo;
+    String photo;
 
     public Integer getId() {
         return id;

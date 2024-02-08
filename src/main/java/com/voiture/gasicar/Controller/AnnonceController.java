@@ -17,6 +17,7 @@ import com.voiture.gasicar.Model.Annonce;
 import com.voiture.gasicar.Model.AnnonceFavoris;
 import com.voiture.gasicar.Model.User;
 import com.voiture.gasicar.Model.Voiture;
+import com.voiture.gasicar.Model.VoiturePhoto;
 import com.voiture.gasicar.Model.Voiture_annonce_details;
 import com.voiture.gasicar.Security.Authority;
 import com.voiture.gasicar.Security.JwtUtils;
@@ -36,6 +37,7 @@ public class AnnonceController {
     public ResponseEntity<String> voitureannonce(HttpServletRequest request) {
         try {
             Voiture car = new Voiture();
+            VoiturePhoto vp = new VoiturePhoto();
             Annonce annonce = new Annonce();
             User user = MyContext.getUser();
             if (user != null) {
@@ -61,6 +63,10 @@ public class AnnonceController {
                 annonce.setStatus(20);
                 annonce.setEtat(0);
                 annonce.insert(null);
+                vp.setIdVoiture(id_voiture);
+                vp.setPhoto(request.getParameter("image"));
+                vp.insert(null);
+                System.out.println("photo vitaaa");
                 return ResponseEntity.ok().body("Votre annonce est bien enregistrer!!");
             } else {
                 return ResponseEntity.badRequest()
@@ -201,6 +207,21 @@ public class AnnonceController {
         } else {
             return null;
         }
+    }
+
+    @PostMapping("/insertPhoto")
+    public ResponseEntity<String> insertPhotoVoiture(HttpServletRequest request){
+        try {
+            VoiturePhoto vp = new  VoiturePhoto();
+            vp.setIdVoiture(2);
+            vp.setPhoto(request.getParameter("image"));
+            vp.insert(null);
+            return ResponseEntity.ok().body("Voiture photo");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Une erreur s'est produit");
+        }
+        
     }
 
     @GetMapping("/recherche")

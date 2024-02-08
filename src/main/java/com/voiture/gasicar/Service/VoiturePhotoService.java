@@ -1,44 +1,55 @@
 package com.voiture.gasicar.Service;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Base64;
+import java.io.InputStream;
+import java.net.URLEncoder;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
+import com.google.auth.Credentials;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 
-import com.voiture.gasicar.Model.VoiturePhoto;
-import com.voiture.gasicar.Repository.VoiturePhotoRepository;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service
-@Transactional
 public class VoiturePhotoService {
-    @Autowired
-    private VoiturePhotoRepository voiturePhotoRepository;
 
-    public void saveVoiturePhoto(Integer idVoiture, MultipartFile file) throws IOException {
-        VoiturePhoto voiturePhoto = new VoiturePhoto();
-        voiturePhoto.setIdVoiture(idVoiture);
-        voiturePhoto.setPhoto(Base64.getEncoder().encodeToString(file.getBytes()));
-        voiturePhotoRepository.save(voiturePhoto);
-    }
+  private String uploadFile(File file, String fileName) throws IOException {
+      BlobId blobId = BlobId.of("car-vente.appspot.com", fileName);
+      BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
+      InputStream inputStream = VoiturePhotoService.class.getClassLoader().getResourceAsStream("car-vente-firebase.json"); // change the file name with your one
+      Credentials credentials = GoogleCredentials.fromStream(inputStream);
+      Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+      storage.create(blobInfo, Files.readAllBytes(file.toPath()));
 
-    @PersistenceContext
-    private EntityManager entityManager;
+      String DOWNLOAD_URL = "https://firebasestorage.googleapis.com/v0/b/car-vente.appspot.com/o/%s?alt=media";
+      return String.format(DOWNLOAD_URL, URLEncoder.encode(fileName, StandardCharsets.UTF_8));
+  }
 
-    public String getPhotoByIdVoiture(Integer idVoiture) {
-        Query query = entityManager.createQuery("SELECT vp.photo FROM VoiturePhoto vp WHERE vp.idVoiture = :idVoiture");
-        query.setParameter("idVoiture", idVoiture);
-        try {
-            return (String) query.getSingleResult();
-        } catch (NoResultException e) {
-            return null; // Return null if no photo found for the given voiture ID
-        }
-    }
+  private String getExtension(String fileName) {
+      return fileName.substring(fileName.lastIndexOf("."));
+  }
+
+  public String upload(Photo photo) throws Exception{            
+        String filename = UUID.randomUUID().toString().concat(this.getExtension(photo.getFilename()));
+        File file= photo.convertToFile();                  
+        String URL = this.uploadFile(file, filename);                                   
+        file.delete();
+        return URL;
+  }
+
+  public String upload(String photos) throws Exception{
+            Photo photo = new Photo(photos,"image.png");
+            photo.convertToFile();
+        return photos;
+  }
+
 }
