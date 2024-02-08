@@ -154,6 +154,15 @@ public class AnnonceController {
         return liste;
     }
 
+    @CrossOrigin(origins = "*")
+    @GetMapping("/annonceValider/{id_voiture}")
+    public Vector<Voiture_annonce_details> getAllDetails(@PathVariable Integer id_voiture) throws Exception {
+        Voiture_annonce_details voiture = new Voiture_annonce_details();
+        voiture.setId_voiture(id_voiture);
+        Vector<Voiture_annonce_details> liste = voiture.select(null);
+        return liste;
+    }
+
     @GetMapping("/annonceRefuser")
     @Authority(role = Role.ADMIN)
     public List<Annonce> getAllRefused() throws Exception {
