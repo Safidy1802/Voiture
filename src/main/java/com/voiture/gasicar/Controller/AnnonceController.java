@@ -33,7 +33,8 @@ public class AnnonceController {
     @Autowired
     JwtUtils utils;
 
-    VoiturePhotoService voiturePhotoService;
+    @Autowired
+    private VoiturePhotoService voiturePhotoService;
 
     @PostMapping("/insert")
     @Authority(role = Role.USER)
