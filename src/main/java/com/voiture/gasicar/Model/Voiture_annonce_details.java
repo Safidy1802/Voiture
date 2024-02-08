@@ -12,7 +12,7 @@ import com.voiture.gasicar.Dao.Connector;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
 
-@TableInfo(name = "v_voiture_annonce_details", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
+@TableInfo(name = "v_voiture_annonce_details_photo", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class Voiture_annonce_details extends DAO {
     @Column(name = "id_annonce")
     Integer id_annonce;
@@ -56,6 +56,8 @@ public class Voiture_annonce_details extends DAO {
     Integer status;
     @Column(name = "etat")
     Integer etat;
+    @Column(name = "photo")
+    String photo;
 
     public Vector<Voiture_annonce_details> annonceAvancer(Connection co, String marque, String model, String categorie,
             String transmission, String couleur, String energie,
@@ -293,5 +295,13 @@ public class Voiture_annonce_details extends DAO {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

@@ -13,7 +13,7 @@ public class VoiturePhoto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "id_voiture")
+    @Column(name = "id_annonce")
     private Integer idVoiture;
 
     @Lob

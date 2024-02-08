@@ -131,6 +131,7 @@ public class AnnonceController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/status/{id}")
     @Authority(role = Role.USER)
     public ResponseEntity<String> statusannonce(@PathVariable Integer id) {
