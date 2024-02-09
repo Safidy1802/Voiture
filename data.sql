@@ -118,3 +118,12 @@ CREATE table voiture_photo(
 create view v_voiture_annonce_details_photo as
 select v_voiture_annonce_details.*, voiture_photo.photo from v_voiture_annonce_details 
 left join voiture_photo on v_voiture_annonce_details.id=voiture_photo.id_voiture;
+
+CREATE TABLE vente (
+    id serial PRIMARY KEY,
+    id_annonce integer references annonce(id),
+    String vendeur references users(id),
+    String acheteur references users(id),
+    prix float,
+    date_vente date DEFAULT CURRENT_DATE
+);

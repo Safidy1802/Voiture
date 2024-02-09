@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.voiture.gasicar.Model.Annonce;
 import com.voiture.gasicar.Model.AnnonceFavoris;
 import com.voiture.gasicar.Model.User;
+import com.voiture.gasicar.Model.Vente;
 import com.voiture.gasicar.Model.Voiture;
 import com.voiture.gasicar.Model.VoiturePhoto;
 import com.voiture.gasicar.Model.Voiture_annonce_details;
@@ -150,11 +151,22 @@ public class AnnonceController {
     @CrossOrigin(origins = "*")
     @PostMapping("/status/{id}")
     @Authority(role = Role.USER)
-    public ResponseEntity<String> statusannonce(@PathVariable Integer id) {
+    public ResponseEntity<String> statusannonce(@PathVariable Integer id, HttpServletRequest request) {
         try {
             Annonce annonce = new Annonce();
-            annonce.modificationStatusVendu(null, id);
-            return ResponseEntity.ok().body("Voiture vendu");
+            Vente vente = new Vente();
+            User user = MyContext.getUser();
+            if (user != null) {
+                vente.setVendeur(user.getId());
+                vente.setAcheteur(request.getParameter("id_acheteur"));
+                vente.setPrix(Float.valueOf(request.getParameter("prix")));
+                vente.setDate_vente(new Date(System.currentTimeMillis()));
+                vente.insert(null);
+                annonce.modificationStatusVendu(null, id);
+                return ResponseEntity.ok().body("Voiture vendu");
+            } else {
+                return ResponseEntity.badRequest().body("Une erreur est survenu, veillez vous reconnecter");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Une erreur s'est produit");
