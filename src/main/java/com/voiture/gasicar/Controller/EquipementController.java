@@ -58,11 +58,4 @@ public class EquipementController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "*")
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deleteEquipement(@PathVariable Integer id) {
-        EquipementService.deleteEquipement(id);
-        return ResponseEntity.noContent().build();
-    }
 }

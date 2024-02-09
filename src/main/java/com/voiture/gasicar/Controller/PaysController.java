@@ -47,11 +47,5 @@ public class PaysController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deletePays(@PathVariable Integer id) {
-        paysService.deletePays(id);
-        return ResponseEntity.noContent().build();
-    }
 }
 

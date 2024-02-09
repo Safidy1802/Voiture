@@ -36,6 +36,7 @@ public class AnnonceController {
     @Autowired
     private VoiturePhotoService voiturePhotoService;
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/insert")
     @Authority(role = Role.USER)
     public ResponseEntity<String> voitureannonce(HttpServletRequest request) {

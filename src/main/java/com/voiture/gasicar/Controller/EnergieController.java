@@ -47,11 +47,5 @@ public class EnergieController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deleteEnergie(@PathVariable Integer id) {
-        energieService.deleteEnergie(id);
-        return ResponseEntity.noContent().build();
-    }
 }
 

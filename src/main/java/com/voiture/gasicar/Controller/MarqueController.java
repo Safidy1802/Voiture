@@ -47,11 +47,5 @@ public class MarqueController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deleteMarque(@PathVariable Integer id) {
-        marqueService.deleteMarque(id);
-        return ResponseEntity.noContent().build();
-    }
 }
 

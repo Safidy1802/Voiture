@@ -105,8 +105,9 @@ create table annonce_favoris (
 );
 
 create view v_voiture_annonce_favoris as
-select v_voiture_annonce_details.* from annonce_favoris 
-join v_voiture_annonce_details on annonce_favoris.id_annonce=v_voiture_annonce_details.id_annonce;
+select v_voiture_annonce_details.*, voiture_photo.photo from v_voiture_annonce_details
+join v_voiture_annonce_details on annonce_favoris.id_annonce=v_voiture_annonce_details.id_annonce
+left join voiture_photo on v_voiture_annonce_details.id=voiture_photo.id_voiture;
 
 CREATE table voiture_photo(
     id serial primary  key,

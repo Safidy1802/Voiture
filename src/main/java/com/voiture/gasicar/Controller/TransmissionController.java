@@ -47,11 +47,5 @@ public class TransmissionController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deleteTransmission(@PathVariable Integer id) {
-        transmissionService.deleteTransmission(id);
-        return ResponseEntity.noContent().build();
-    }
 }
 

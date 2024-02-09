@@ -47,11 +47,5 @@ public class CouleurController {
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deleteCouleur(@PathVariable Integer id) {
-        couleurService.deleteCouleur(id);
-        return ResponseEntity.noContent().build();
-    }
 }
 

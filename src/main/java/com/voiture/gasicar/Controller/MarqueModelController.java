@@ -47,12 +47,6 @@ public class MarqueModelController {
         MarqueModel updated = marqueModelService.updateMarqueModel(id, updatedMarqueModel);
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
-
-    @DeleteMapping("/delete/{id}")
-    @Authority(role = Role.ADMIN)
-    public ResponseEntity<Void> deleteMarqueModel(@PathVariable Integer id) {
-        marqueModelService.deleteMarqueModel(id);
-        return ResponseEntity.noContent().build();
-    }
+    
 }
 
