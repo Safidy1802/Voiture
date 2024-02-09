@@ -222,7 +222,7 @@ public class AnnonceController {
             String[] files=request.getParameterValues("images");
             List<String> str=this.voiturePhotoService.upload(files);
             vp.setIdVoiture(2);
-            vp.setPhoto(str);
+            vp.setPhoto(str.get(0));
             vp.insert(null);
             return ResponseEntity.ok().body("Voiture photo");
         } catch (Exception e) {

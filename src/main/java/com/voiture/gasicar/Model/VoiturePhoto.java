@@ -14,7 +14,7 @@ public class VoiturePhoto extends DAO{
     @Column(name = "id_voiture")
     Integer idVoiture;
     @Column(name = "photo")
-    List<String> photo;
+    String photo;
 
     public Integer getId() {
         return id;
@@ -32,13 +32,14 @@ public class VoiturePhoto extends DAO{
         this.idVoiture = idVoiture;
     }
 
-    public List<String> getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(List<String> photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
+
 
     // Getters and setters
 }
