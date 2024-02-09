@@ -48,9 +48,11 @@ public class Voiture_annonce_favoris extends DAO{
     Date date_annonce;
     @Column(name = "status")
     Integer status;
+    @Column(name = "photo")
+    String photo;
     @Column(name = "etat")
     Integer etat;
-    
+
     public Integer getId_annonce() {
         return id_annonce;
     }
@@ -176,5 +178,11 @@ public class Voiture_annonce_favoris extends DAO{
     }
     public void setEtat(Integer etat) {
         this.etat = etat;
+    }
+    public String getPhoto() {
+        return photo;
+    }
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

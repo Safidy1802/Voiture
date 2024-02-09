@@ -43,12 +43,12 @@ public class Voiture_annonce_detailsController {
     @CrossOrigin(origins = "*")
     @GetMapping("/listefavoris")
     @Authority(role = Role.USER)
-    public Vector<Voiture_annonce_details> getAllAnnonceFavorisUser() throws Exception {
-        Voiture_annonce_details voiture = new Voiture_annonce_details();
+    public Vector<Voiture_annonce_favoris> getAllAnnonceFavorisUser() throws Exception {
+        Voiture_annonce_favoris voiture = new Voiture_annonce_favoris();
         User user = MyContext.getUser();
         if (user != null) {
             voiture.setId_user(user.getId());
-            Vector<Voiture_annonce_details> all = voiture.select(null);
+            Vector<Voiture_annonce_favoris> all = voiture.select(null);
             return all;
         } else {
             return null;
