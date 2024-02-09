@@ -121,6 +121,7 @@ public class AnnonceController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/favoris/{id}")
     @Authority(role = Role.USER)
     public ResponseEntity<String> ajoutFavoris(@PathVariable Integer id) {
