@@ -157,6 +157,7 @@ public class AnnonceController {
             Vente vente = new Vente();
             User user = MyContext.getUser();
             if (user != null) {
+                vente.setId_annonce(id);
                 vente.setVendeur(user.getId());
                 vente.setAcheteur(request.getParameter("id_acheteur"));
                 vente.setPrix(Float.valueOf(request.getParameter("prix")));
