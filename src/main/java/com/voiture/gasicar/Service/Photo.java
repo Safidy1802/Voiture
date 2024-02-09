@@ -22,12 +22,13 @@ public class Photo {
         Pattern pattern = Pattern.compile("data:image/(.*?);base64,");
         Matcher matcher = pattern.matcher(base64);
         matcher.find();
+        String format=matcher.group(1);
         base64 = base64.substring(matcher.end());
         byte[] decodedBytes = Base64.getDecoder().decode(base64);
         ByteArrayInputStream inputStream = new ByteArrayInputStream(decodedBytes);
-
+        this.setFilename(filename+"."+format);
         File outputImage = new File(filename);
-        ImageIO.write(ImageIO.read(inputStream), "jpg", outputImage);
+        ImageIO.write(ImageIO.read(inputStream), format, outputImage);
 
         return outputImage;
 
