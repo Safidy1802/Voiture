@@ -46,7 +46,7 @@ public class VoiturePhotoService {
 
   public String upload(String photos) throws Exception{
         String ima = null;
-        Photo photo = new Photo(photos,"image.png");
+        Photo photo = new Photo(photos,"image");
         photo.convertToFile();
         ima = this.upload(photo);
         return ima;
