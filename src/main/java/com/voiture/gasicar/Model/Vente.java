@@ -6,7 +6,7 @@ import com.voiture.gasicar.Dao.Column;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
 
-@TableInfo(name = "voiture", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
+@TableInfo(name = "vente", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class Vente extends DAO{
     @Column(name = "id", isPrimary = true)
     Integer id;
@@ -20,7 +20,7 @@ public class Vente extends DAO{
     Float prix;
     @Column(name = "date_vente")
     Date date_vente;
-    
+
     public Integer getId() {
         return id;
     }
