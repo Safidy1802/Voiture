@@ -15,7 +15,7 @@ import com.voiture.gasicar.Dao.TableInfo;
 
 @TableInfo(name = "annonce", user = "Safidimalala54", pass = "yqs1NltKOUn5", database = "gasycar")
 public class Annonce extends DAO{
-    @Column(name = "id")
+    @Column(name = "id", isPrimary = true)
     Integer id;
     @Column(name = "id_voiture")
     Integer voiture;
