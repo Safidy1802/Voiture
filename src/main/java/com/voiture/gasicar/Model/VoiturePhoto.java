@@ -1,5 +1,7 @@
 package com.voiture.gasicar.Model;
 
+import java.util.List;
+
 import com.voiture.gasicar.Dao.Column;
 import com.voiture.gasicar.Dao.DAO;
 import com.voiture.gasicar.Dao.TableInfo;
@@ -12,7 +14,7 @@ public class VoiturePhoto extends DAO{
     @Column(name = "id_voiture")
     Integer idVoiture;
     @Column(name = "photo")
-    String photo;
+    List<String> photo;
 
     public Integer getId() {
         return id;
@@ -30,11 +32,11 @@ public class VoiturePhoto extends DAO{
         this.idVoiture = idVoiture;
     }
 
-    public String getPhoto() {
+    public List<String> getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(List<String> photo) {
         this.photo = photo;
     }
 

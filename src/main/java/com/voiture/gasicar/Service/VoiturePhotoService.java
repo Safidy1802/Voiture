@@ -15,6 +15,8 @@ import com.google.cloud.storage.StorageOptions;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -44,13 +46,13 @@ public class VoiturePhotoService {
         return URL;
   }
 
-  public String upload(String photos) throws Exception{
-        String ima = null;
-        System.out.println(photos);
-        Photo photo = new Photo(photos,"image.jpg");
-        photo.convertToFile();
-        ima = this.upload(photo);
-        return ima;
+  public List<String> upload(String[] photos) throws Exception{
+        List<String> images=new ArrayList<>();
+        for (int i = 0; i < photos.length; i++) {
+            Photo photo = new Photo(photos[i],"image"+i+".jpg");
+            images.add(this.upload(photo));
+        }
+        return images;
   }
 
 }

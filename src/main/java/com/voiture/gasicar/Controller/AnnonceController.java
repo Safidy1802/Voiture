@@ -68,7 +68,7 @@ public class AnnonceController {
                 annonce.setEtat(0);
                 annonce.insert(null);
                 vp.setIdVoiture(id_voiture);
-                vp.setPhoto(request.getParameter("image"));
+                //vp.setPhoto(request.getParameter("image"));
                 vp.insert(null);
                 System.out.println("photo vitaaa");
                 return ResponseEntity.ok().body("Votre annonce est bien enregistrer!!");
@@ -219,9 +219,8 @@ public class AnnonceController {
     public ResponseEntity<String> insertPhotoVoiture(HttpServletRequest request){
         try {
             VoiturePhoto vp = new  VoiturePhoto();
-            String photo = request.getParameter("image");
-            System.out.println(photo);
-            String str = voiturePhotoService.upload(photo);
+            String[] files=request.getParameterValues("images");
+            List<String> str=this.voiturePhotoService.upload(files);
             vp.setIdVoiture(2);
             vp.setPhoto(str);
             vp.insert(null);
