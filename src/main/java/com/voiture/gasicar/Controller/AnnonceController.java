@@ -219,7 +219,9 @@ public class AnnonceController {
     public ResponseEntity<String> insertPhotoVoiture(HttpServletRequest request){
         try {
             VoiturePhoto vp = new  VoiturePhoto();
-            String str = this.voiturePhotoService.upload(request.getParameter("image"));
+            String photo = request.getParameter("image");
+            System.out.println(photo);
+            String str = voiturePhotoService.upload(photo);
             vp.setIdVoiture(2);
             vp.setPhoto(str);
             vp.insert(null);
