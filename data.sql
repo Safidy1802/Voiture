@@ -25,16 +25,6 @@ create table marque (
     nom varchar(150)
 );
 
-create table marque_model (
-    id serial primary key,
-    id_marque integer references marque(id),
-    nom_model varchar(100)
-);
-
-create view v_model_marque as
-select mm.id, m.nom, mm.nom_model from marque_model mm
-join marque m on mm.id_marque=m.id;
-
 create table transmission(
     id serial primary key,
     nom varchar(150)
@@ -59,7 +49,8 @@ create table pays (
 create table voiture (
     id serial primary key,
     id_user varchar(60),
-    id_marque_model integer,
+    id_marque integer,
+    nom_model varchar(100),
     id_categorie integer,
     id_transmission integer,
     id_couleur integer,
@@ -72,7 +63,7 @@ create table voiture (
     nombre_place integer,
     kilometrage float,
     foreign key (id_user) references users(id),
-    foreign key (id_marque_model) references marque_model(id),
+    foreign key (id_marque) references marque(id),
     foreign key (id_categorie) references categorie(id_categorie),
     foreign key (id_transmission) references transmission(id),
     foreign key (id_couleur) references couleur(id),
@@ -81,30 +72,15 @@ create table voiture (
 );
 
 create view v_voiture as
-select v.id, u.id as id_user, vmm.nom as marque, vmm.nom_model as model, c.nom_categorie as categorie, t.nom as transmission, cou.nom as couleur, e.nom as energie, p.nom as pays, v.matricule, v.annee, v.consommation, v.reservoir, v.nombre_place, v.kilometrage from voiture v
-join v_model_marque vmm on v.id_marque_model=vmm.id
+select v.id, u.id as id_user, marque.nom as marque, v.nom_model as model, c.nom_categorie as categorie, t.nom as transmission, cou.nom as couleur, e.nom as energie, p.nom as pays, v.matricule, v.annee, v.consommation, v.reservoir, v.nombre_place, v.kilometrage from voiture v
 join users u on v.id_user=u.id
 join categorie c on v.id_categorie=c.id_categorie
+join marque on v.id_marque = marque.id;
 join transmission t on v.id_transmission=t.id
 join couleur cou on v.id_couleur=cou.id
 join energie e on v.id_energie=e.id
 join pays p on v.id_pays=p.id;
 
-create table equipement (
-    id serial primary key,
-    nom varchar(100)
-);
------direction_assiste ,ecran_tactile ,climatisation ,radio ,bluetooth ,gps ,airbag ,fermeture_centralise ,siege_chauffant ,vitre_electrique 
-
-create table equipement_voiture (
-    id serial primary key,
-    id_voiture integer references voiture(id),
-    id_equipement integer references equipement(id)
-);
-
-create view v_voiture_equipement as
-select voiture.id as id_voiture, equipement.nom as equipement from equipement_voiture
-join equipement on equipement_voiture.id_equipement=equipement.id;
 
 create table annonce (
     id serial primary key,

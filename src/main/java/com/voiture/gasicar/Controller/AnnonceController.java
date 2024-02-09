@@ -45,8 +45,11 @@ public class AnnonceController {
             Annonce annonce = new Annonce();
             User user = MyContext.getUser();
             if (user != null) {
+                String[] files=request.getParameterValues("images");
+                List<String> str=this.voiturePhotoService.upload(files);
                 car.setIduser(user.getId());
                 car.setMarque(Integer.valueOf(request.getParameter("marque")));
+                car.setNom_model(request.getParameter("model"));
                 car.setCategorie(Integer.valueOf(request.getParameter("categorie")));
                 car.setTransmission(Integer.valueOf(request.getParameter("transmission")));
                 car.setCouleur(Integer.valueOf(request.getParameter("couleur")));
@@ -65,10 +68,11 @@ public class AnnonceController {
                 annonce.setPrix(Float.valueOf(request.getParameter("prix")));
                 annonce.setDescription(request.getParameter("description"));
                 annonce.setStatus(20);
+                annonce.setDate_annonce(new Date(System.currentTimeMillis()));
                 annonce.setEtat(0);
                 annonce.insert(null);
                 vp.setIdVoiture(id_voiture);
-                //vp.setPhoto(request.getParameter("image"));
+                vp.setPhoto(str.get(0));
                 vp.insert(null);
                 System.out.println("photo vitaaa");
                 return ResponseEntity.ok().body("Votre annonce est bien enregistrer!!");

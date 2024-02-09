@@ -10,8 +10,10 @@ public class Voiture extends DAO{
     Integer id;
     @Column(name = "id_user")
     String iduser;
-    @Column(name = "id_marque_model")
+    @Column(name = "id_marque")
     Integer marque;
+    @Column(name = "nom_model")
+    String nom_model;
     @Column(name = "id_categorie")
     Integer categorie;
     @Column(name = "id_transmission")
@@ -167,5 +169,13 @@ public class Voiture extends DAO{
 
     public void setKilometrage(Float kilometrage) {
         this.kilometrage = kilometrage;
+    }
+
+    public String getNom_model() {
+        return nom_model;
+    }
+
+    public void setNom_model(String nom_model) {
+        this.nom_model = nom_model;
     }
 }
